@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Token Wallet</title>
+</head>
+<body>
+
+  <div id="js-app">
+    <h1>{{ name }} Wallet</h1>
+    <p>あなたのアドレス: {{ defaultAccount }}</p>
+    <p>{{ name }}の保有量: {{ showBalance(balance) }} {{ symbol }}</p>
+    <p>
+       送金先: <br />
+       <input v-model="to" type="text" />
+    </p>
+    <p>
+      送る量: <br />
+      <input v-model="amount" type="number" />
+    </p>
+    <p>
+      <button @click="send">送金</button>
+    </p>
+    <p v-if="history">
+    送金成功: <a :href="'https://ropsten.etherscan.io/tx/' + history">{{ history }}
+    </a>
+</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <!-- <script src="js/web3.min.js"></script> -->
+  <script src="js/contract.js"></script>
+</body>
+</html>
